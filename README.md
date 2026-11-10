@@ -15,3 +15,5 @@ Konfigurasi ringan (*floating window manager*) berbasis Wayland menggunakan `lab
 ## Kebutuhan Paket (Arch Linux)
 ```bash
 sudo pacman -S labwc waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
+```bash
+sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist pavucontrol
