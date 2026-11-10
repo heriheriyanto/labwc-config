@@ -12,14 +12,15 @@ Konfigurasi ringan (*floating window manager*) berbasis Wayland menggunakan `lab
 * **Launcher:** `fuzzel` (Cepat, ringan, native Wayland)
 * **Wallpaper:** `swaybg`
 * **Terminal:** `kitty`
+* **Polkit:** `polkit-gnome`
 
 ## Kebutuhan Paket (Arch Linux)
 ### 1. Paket utama
 ```bash
-sudo pacman -S labwc uwsm waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
+sudo pacman -S labwc uwsm polkit-gnome waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
 ```
 ```bash
-sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr xorg-xwayland
 ```
 ### 2. Additional Package
 ```bash
