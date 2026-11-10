@@ -26,6 +26,9 @@ sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr xorg-xwayland
 ```bash
 sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist wl-clipboard pavucontrol
 ```
+```bash
+sudo pacman -S gvfs gvfs-mtp udisks2 brightnessctl wlr-randr mako
+```
 ### Memastikan service network-manager 
 ```bash
 sudo systemctl enable --now NetworkManager
