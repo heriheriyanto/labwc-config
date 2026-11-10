@@ -7,6 +7,7 @@ Konfigurasi ringan (*floating window manager*) berbasis Wayland menggunakan `lab
 
 ## Komponen Utama
 * **Compositor:** `labwc` (DNA Openbox di atas Wayland)
+* **Session Manager:** `uwsm` (session manager untuk Wayland)
 * **Panel:** `waybar` (Didesain tipis & elegan dengan font Ubuntu/Cantarell)
 * **Launcher:** `fuzzel` (Cepat, ringan, native Wayland)
 * **Wallpaper:** `swaybg`
@@ -15,9 +16,13 @@ Konfigurasi ringan (*floating window manager*) berbasis Wayland menggunakan `lab
 ## Kebutuhan Paket (Arch Linux)
 ### 1. Paket utama
 ```bash
-sudo pacman -S labwc waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
+sudo pacman -S labwc uwsm waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
 ```
 ### 2. Additional Package
 ```bash
 sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist pavucontrol
+```
+## Running dari TTY
+```bash
+uwsm start labwc
 ```
