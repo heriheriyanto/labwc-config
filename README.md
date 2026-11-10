@@ -26,9 +26,19 @@ sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr xorg-xwayland
 ```bash
 sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist wl-clipboard pavucontrol
 ```
+#### utilities:
 ```bash
 sudo pacman -S gvfs gvfs-mtp udisks2 brightnessctl wlr-randr mako
 ```
+#### theme & icon:
+```bash
+sudo pacman -S nwg-look papirus-icon-theme adw-gtk-theme arc-gtk-theme
+```
+Flatpak override theme:
+```bash
+flatpak override --user --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtk-4.0:ro
+```
+
 ### Memastikan service network-manager 
 ```bash
 sudo systemctl enable --now NetworkManager
