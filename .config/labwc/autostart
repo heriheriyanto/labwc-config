@@ -9,3 +9,6 @@ swaybg -c '#181818' &
 
 # Jalankan panel waybar
 waybar &
+
+# Aktifkan polkit-gnome
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
