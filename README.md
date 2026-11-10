@@ -18,11 +18,25 @@ Konfigurasi ringan (*floating window manager*) berbasis Wayland menggunakan `lab
 ```bash
 sudo pacman -S labwc uwsm waybar fuzzel swaybg pipewire pipewire-pulse wireplumber networkmanager kitty mc ttf-ubuntu-font-family cantarell-fonts
 ```
+```bash
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr
+```
 ### 2. Additional Package
 ```bash
-sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist pavucontrol
+sudo pacman -S thunar thunar-volman swayimg grim slurp cliphist wl-clipboard pavucontrol
+```
+### Memastikan service network-manager 
+```bash
+sudo systemctl enable --now NetworkManager
 ```
 ## Running dari TTY
 ```bash
 uwsm start labwc
+```
+## Git-clone
+```bash
+git clone https://github.com/heriheriyanto/labwc-config ~/.config
+```
+```bash
+git clone https://github.com/heriheriyanto/labwc-themes ~/.local/share/themes
 ```
