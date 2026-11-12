@@ -1,6 +1,6 @@
 # Override tema labwc (dark, aksen biru)
 # Lokasi : ~/.config/labwc/themerc-override
-# Menimpa tema yang aktif. Kalau memakai tema lain dari repo labwc-themes, hapus file ini.
+# Menimpa tema yang aktif. Kalau memakai tema lain dari repo lain, hapus file ini.
 
 border.width: 1
 
