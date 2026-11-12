@@ -1,0 +1,48 @@
+# Autostart labwc
+# Lokasi : ~/.config/labwc/autostart
+# Dijalankan sebagai shell script saat labwc mulai. Setiap program harus diakhiri "&".
+
+# ---------- Layar (refresh rate) ----------
+# Labwc memakai mode "preferred" monitor, yang belum tentu refresh rate tertinggi.
+# 1) Jalankan "wlr-randr" di terminal untuk melihat nama output dan mode yang tersedia.
+# 2) Hapus tanda # pada baris di bawah lalu sesuaikan nama output, resolusi, dan Hz.
+# wlr-randr --output DP-1 --mode 1920x1080@144.000 &
+
+# ---------- Wallpaper ----------
+# Taruh gambar di ~/Pictures/wallpaper.png untuk memakainya, kalau tidak ada dipakai warna polos.
+if [ -f "$HOME/Pictures/wallpaper.png" ]; then
+    swaybg -i "$HOME/Pictures/wallpaper.png" -m fill &
+else
+    swaybg -c '#181818' &
+fi
+
+# ---------- Panel, notifikasi, polkit ----------
+waybar &
+mako &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# ---------- Applet jaringan (muncul di tray waybar) ----------
+(sleep 2; nm-applet --indicator) &
+
+# ---------- Riwayat clipboard (dipakai Super+V) ----------
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+
+# ---------- Kunci layar otomatis setelah 5 menit idle, dan sebelum suspend ----------
+# Untuk suspend otomatis setelah 15 menit, tambahkan:  timeout 900 'systemctl suspend'
+swayidle -w \
+    timeout 300 'swaylock -f' \
+    before-sleep 'swaylock -f' &
+
+# ---------- Tema untuk aplikasi GTK3/GTK4/libadwaita (lewat gsettings/dconf) ----------
+if command -v gsettings >/dev/null 2>&1; then
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' &
+    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' &
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' &
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita' &
+    gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11' &
+fi
+
+# ---------- Opsional ----------
+# Bluetooth (butuh paket bluez dan blueman, lalu: sudo systemctl enable --now bluetooth):
+# blueman-applet &
