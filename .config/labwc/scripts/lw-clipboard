@@ -1,0 +1,8 @@
+#!/bin/sh
+# Pilih riwayat clipboard (cliphist) lewat fuzzel, lalu salin kembali.
+# Butuh "wl-paste --watch cliphist store" berjalan (sudah ada di autostart).
+
+sel=$(cliphist list | fuzzel --dmenu -p 'Clipboard > ') || exit 0
+[ -n "$sel" ] || exit 0
+
+printf '%s' "$sel" | cliphist decode | wl-copy

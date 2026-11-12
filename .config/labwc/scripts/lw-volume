@@ -1,0 +1,24 @@
+#!/bin/sh
+# Atur volume lalu tampilkan OSD lewat mako.
+# Pemakaian: lw-volume up | down | mute
+
+sink='@DEFAULT_AUDIO_SINK@'
+
+case "$1" in
+    up)   wpctl set-volume -l 1.0 "$sink" 5%+ ;;
+    down) wpctl set-volume "$sink" 5%- ;;
+    mute) wpctl set-mute "$sink" toggle ;;
+    *)    echo "Pemakaian: ${0##*/} up|down|mute" >&2; exit 1 ;;
+esac
+
+out=$(wpctl get-volume "$sink") || exit 0
+vol=$(printf '%s\n' "$out" | awk '{ printf "%d", $2 * 100 + 0.5 }')
+
+case "$out" in
+    *MUTED*) text="Volume: mute" ;;
+    *)       text="Volume: ${vol}%" ;;
+esac
+
+notify-send -a lw-osd -t 1200 \
+    -h string:x-canonical-private-synchronous:lw-volume \
+    -h "int:value:$vol" "$text"

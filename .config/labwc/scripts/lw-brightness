@@ -1,0 +1,36 @@
+#!/bin/sh
+# Atur kecerahan layar lalu tampilkan OSD lewat mako.
+# Pemakaian: lw-brightness up | down
+# Tidak melakukan apa-apa kalau tidak ada backlight (PC desktop).
+
+command -v brightnessctl >/dev/null 2>&1 || exit 0
+
+current() {
+    brightnessctl -m 2>/dev/null | cut -d, -f4 | tr -d '%'
+}
+
+case "$1" in
+    up)
+        brightnessctl -q set 5%+ 2>/dev/null
+        ;;
+    down)
+        cur=$(current)
+        # Jangan sampai layar mati total (0%)
+        if [ "${cur:-100}" -le 6 ]; then
+            brightnessctl -q set 1% 2>/dev/null
+        else
+            brightnessctl -q set 5%- 2>/dev/null
+        fi
+        ;;
+    *)
+        echo "Pemakaian: ${0##*/} up|down" >&2
+        exit 1
+        ;;
+esac
+
+pct=$(current)
+[ -n "$pct" ] || exit 0
+
+notify-send -a lw-osd -t 1200 \
+    -h string:x-canonical-private-synchronous:lw-brightness \
+    -h "int:value:$pct" "Kecerahan: ${pct}%"

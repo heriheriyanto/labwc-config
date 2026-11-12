@@ -1,0 +1,35 @@
+#!/bin/sh
+# Screenshot dengan grim + slurp.
+# Pemakaian:
+#   lw-screenshot full        seluruh layar, disimpan ke file dan clipboard
+#   lw-screenshot area        pilih area, disimpan ke file dan clipboard
+#   lw-screenshot area-clip   pilih area, hanya ke clipboard
+
+pics=$(xdg-user-dir PICTURES 2>/dev/null) || pics="$HOME/Pictures"
+dir="$pics/Screenshots"
+file="$dir/$(date +%F_%H-%M-%S).png"
+
+case "$1" in
+    full)
+        mkdir -p "$dir"
+        grim "$file" || exit 1
+        ;;
+    area)
+        geom=$(slurp) || exit 0
+        mkdir -p "$dir"
+        grim -g "$geom" "$file" || exit 1
+        ;;
+    area-clip)
+        geom=$(slurp) || exit 0
+        grim -g "$geom" - | wl-copy --type image/png || exit 1
+        notify-send -a lw-shot "Screenshot disalin ke clipboard"
+        exit 0
+        ;;
+    *)
+        echo "Pemakaian: ${0##*/} full|area|area-clip" >&2
+        exit 1
+        ;;
+esac
+
+wl-copy --type image/png < "$file"
+notify-send -a lw-shot -i "$file" "Screenshot disimpan" "$file"
