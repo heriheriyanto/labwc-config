@@ -1,0 +1,11 @@
+color=181818
+font=Ubuntu
+indicator-radius=90
+indicator-thickness=8
+inside-color=181818ff
+ring-color=444444ff
+key-hl-color=7aa2f7ff
+line-color=00000000
+separator-color=00000000
+show-failed-attempts
+ignore-empty-password
