@@ -1,0 +1,77 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": ["ext/workspaces", "wlr/taskbar"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "backlight", "pulseaudio", "network", "battery", "tray"],
+
+    "ext/workspaces": {
+        "format": "{name}",
+        "sort-by-id": true,
+        "on-click": "activate"
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "tooltip-format": "{title}",
+        "on-click": "minimize-raise",
+        "on-click-middle": "close"
+    },
+
+    "clock": {
+        "format": "{:%H:%M  %d/%m/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 3,
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "RAM {percentage}%",
+        "interval": 5
+    },
+
+    "backlight": {
+        "format": "Bri {percent}%",
+        "on-scroll-up": "$HOME/.config/labwc/scripts/lw-brightness up",
+        "on-scroll-down": "$HOME/.config/labwc/scripts/lw-brightness down"
+    },
+
+    "pulseaudio": {
+        "format": "Vol {volume}%",
+        "format-muted": "Vol mute",
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "network": {
+        "format-wifi": "WiFi {essid} {signalStrength}%",
+        "format-ethernet": "Eth",
+        "format-disconnected": "Offline",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "kitty -e nmtui"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "Bat {capacity}%",
+        "format-charging": "Chg {capacity}%",
+        "format-plugged": "AC {capacity}%"
+    },
+
+    "tray": {
+        "spacing": 8,
+        "icon-size": 16
+    }
+}
