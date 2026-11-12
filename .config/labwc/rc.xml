@@ -9,7 +9,7 @@
 
   <!-- ============ Tema (warna detail ada di themerc-override) ============ -->
   <theme>
-    <!-- Untuk memakai tema dari repo labwc-themes, isi namanya di sini
+    <!-- Untuk memakai tema dari repo lain, isi namanya di sini
          lalu hapus/ubah file themerc-override:
     <name>NAMA-TEMA</name>
     -->
