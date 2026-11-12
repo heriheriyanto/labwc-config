@@ -1,0 +1,29 @@
+# Mako (notifikasi)
+# Lokasi : ~/.config/mako/config
+
+font=Ubuntu 10
+background-color=#181818ee
+text-color=#eeeeee
+border-color=#444444
+progress-color=over #7aa2f7
+border-size=1
+border-radius=8
+padding=10
+margin=10
+width=340
+max-icon-size=48
+anchor=top-right
+layer=overlay
+default-timeout=5000
+
+[urgency=high]
+border-color=#f7768e
+default-timeout=0
+
+# OSD volume dan kecerahan (dikirim oleh script lw-volume dan lw-brightness)
+[app-name=lw-osd]
+anchor=bottom-center
+width=260
+margin=0,0,60
+format=%s
+default-timeout=1200
