@@ -77,13 +77,6 @@ xdg-user-dirs-update
 tapi diganti namanya menjadi `*.bak-<waktu>`. (Jangan `git clone` langsung ke `~/.config`: isi repo
 berada di dalam folder `.config/`, jadi path-nya akan salah.)
 
-Opsional, tema labwc dari repo terpisah (lalu isi `<name>` di bagian `<theme>` pada `rc.xml`
-dan hapus `~/.config/labwc/themerc-override`):
-
-```bash
-git clone https://github.com/heriheriyanto/labwc-themes ~/.local/share/themes
-```
-
 ## 4. Menjalankan
 
 Dari TTY:
