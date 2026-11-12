@@ -7,6 +7,25 @@
 -->
 <labwc_config>
 
+  <!-- ============ Setting Utama Labwc ============ -->
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+    <adaptiveSync>yes</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <hdr>no</hdr>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>no</xwaylandPersistence>
+    <primarySelection>yes</primarySelection>
+    <!--
+      # See labwc-config(5) for details
+      <promptCommand></promptCommand>
+      # See labwc-config(5) for details
+      <errorCommand></errorCommand>
+    -->
+  </core>
+
   <!-- ============ Tema (warna detail ada di themerc-override) ============ -->
   <theme>
     <!-- Untuk memakai tema dari repo lain, isi namanya di sini
