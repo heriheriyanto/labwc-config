@@ -1,0 +1,23 @@
+# Environment labwc
+# Lokasi : ~/.config/labwc/environment
+# Format : NAMA=nilai (tanpa "export", tanpa tanda kutip)
+
+# Layout keyboard (us, atau mis. "us,id" untuk dua layout)
+XKB_DEFAULT_LAYOUT=us
+
+# Kursor
+XCURSOR_THEME=Adwaita
+XCURSOR_SIZE=24
+
+# Terminal bawaan (dipakai menu klik kanan labwc dan program lain)
+TERMINAL=kitty
+
+# Qt: pakai Wayland, fallback ke X11. Atur tampilan lewat qt6ct (lihat README).
+QT_QPA_PLATFORM=wayland;xcb
+QT_QPA_PLATFORMTHEME=qt6ct
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# Firefox, Electron/Chromium, Java
+MOZ_ENABLE_WAYLAND=1
+ELECTRON_OZONE_PLATFORM_HINT=auto
+_JAVA_AWT_WM_NONREPARENTING=1

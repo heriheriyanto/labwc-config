@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+  Labwc rc.xml
+  Lokasi : ~/.config/labwc/rc.xml
+  Modifier: W = Super, A = Alt, C = Ctrl, S = Shift
+  Terapkan perubahan tanpa logout: Super+Alt+R
+-->
+<labwc_config>
+
+  <!-- ============ Tema (warna detail ada di themerc-override) ============ -->
+  <theme>
+    <!-- Untuk memakai tema dari repo labwc-themes, isi namanya di sini
+         lalu hapus/ubah file themerc-override:
+    <name>NAMA-TEMA</name>
+    -->
+    <cornerRadius>8</cornerRadius>
+    <font place="ActiveWindow">
+      <name>Ubuntu</name>
+      <size>10</size>
+    </font>
+    <font place="InactiveWindow">
+      <name>Ubuntu</name>
+      <size>10</size>
+    </font>
+    <font place="MenuItem">
+      <name>Ubuntu</name>
+      <size>10</size>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>Ubuntu</name>
+      <size>10</size>
+    </font>
+  </theme>
+
+  <!-- ============ Workspace ============ -->
+  <desktops number="4">
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+    </names>
+  </desktops>
+
+  <!-- ============ Touchpad (abaikan kalau bukan laptop) ============ -->
+  <libinput>
+    <device category="touchpad">
+      <tap>yes</tap>
+      <naturalScroll>no</naturalScroll>
+      <disableWhileTyping>yes</disableWhileTyping>
+    </device>
+  </libinput>
+
+  <!-- ============ Keyboard ============ -->
+  <keyboard>
+    <!-- Wajib paling atas: memuat keybind bawaan (Alt+Tab, dll).
+         Keybind di bawah menambah atau menimpa yang bawaan. -->
+    <default />
+
+    <repeatRate>30</repeatRate>
+    <repeatDelay>350</repeatDelay>
+
+    <!-- Aplikasi -->
+    <keybind key="W-Return"><action name="Execute" command="kitty" /></keybind>
+    <keybind key="W-space"><action name="Execute" command="fuzzel" /></keybind>
+    <keybind key="W-e"><action name="Execute" command="thunar" /></keybind>
+    <keybind key="W-v">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-clipboard"</command></action>
+    </keybind>
+
+    <!-- Sesi: kunci layar dan menu daya -->
+    <keybind key="W-l"><action name="Execute" command="swaylock -f" /></keybind>
+    <keybind key="W-x">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-power"</command></action>
+    </keybind>
+    <keybind key="W-A-r"><action name="Reconfigure" /></keybind>
+
+    <!-- Jendela -->
+    <keybind key="W-q"><action name="Close" /></keybind>
+    <keybind key="A-F4"><action name="Close" /></keybind>
+    <keybind key="W-f"><action name="ToggleFullscreen" /></keybind>
+    <keybind key="W-m"><action name="ToggleMaximize" /></keybind>
+    <keybind key="W-n"><action name="Iconify" /></keybind>
+    <keybind key="W-t"><action name="ToggleAlwaysOnTop" /></keybind>
+    <keybind key="W-Left"><action name="SnapToEdge" direction="left" /></keybind>
+    <keybind key="W-Right"><action name="SnapToEdge" direction="right" /></keybind>
+    <keybind key="W-Up"><action name="SnapToEdge" direction="up" /></keybind>
+    <keybind key="W-Down"><action name="SnapToEdge" direction="down" /></keybind>
+
+    <!-- Workspace: Super+angka pindah, Super+Alt+angka kirim jendela -->
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-A-1"><action name="SendToDesktop" to="1" /></keybind>
+    <keybind key="W-A-2"><action name="SendToDesktop" to="2" /></keybind>
+    <keybind key="W-A-3"><action name="SendToDesktop" to="3" /></keybind>
+    <keybind key="W-A-4"><action name="SendToDesktop" to="4" /></keybind>
+    <keybind key="C-A-Left"><action name="GoToDesktop" to="left" /></keybind>
+    <keybind key="C-A-Right"><action name="GoToDesktop" to="right" /></keybind>
+
+    <!-- Screenshot -->
+    <keybind key="Print">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-screenshot full"</command></action>
+    </keybind>
+    <keybind key="S-Print">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-screenshot area"</command></action>
+    </keybind>
+    <keybind key="C-Print">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-screenshot area-clip"</command></action>
+    </keybind>
+
+    <!-- Tombol multimedia (tetap jalan saat layar terkunci) -->
+    <keybind key="XF86AudioRaiseVolume" allowWhenLocked="yes">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-volume up"</command></action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume" allowWhenLocked="yes">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-volume down"</command></action>
+    </keybind>
+    <keybind key="XF86AudioMute" allowWhenLocked="yes">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-volume mute"</command></action>
+    </keybind>
+    <keybind key="XF86AudioMicMute" allowWhenLocked="yes">
+      <action name="Execute" command="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" />
+    </keybind>
+    <keybind key="XF86MonBrightnessUp" allowWhenLocked="yes">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-brightness up"</command></action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute"><command>sh -c "$HOME/.config/labwc/scripts/lw-brightness down"</command></action>
+    </keybind>
+    <keybind key="XF86AudioPlay" allowWhenLocked="yes"><action name="Execute" command="playerctl play-pause" /></keybind>
+    <keybind key="XF86AudioNext" allowWhenLocked="yes"><action name="Execute" command="playerctl next" /></keybind>
+    <keybind key="XF86AudioPrev" allowWhenLocked="yes"><action name="Execute" command="playerctl previous" /></keybind>
+  </keyboard>
+
+  <!-- ============ Mouse: bawaan (Alt+drag pindah, Alt+klik kanan resize, klik kanan desktop = menu) ============ -->
+  <mouse>
+    <default />
+  </mouse>
+
+</labwc_config>

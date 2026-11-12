@@ -1,0 +1,28 @@
+# Override tema labwc (dark, aksen biru)
+# Lokasi : ~/.config/labwc/themerc-override
+# Menimpa tema yang aktif. Kalau memakai tema lain dari repo labwc-themes, hapus file ini.
+
+border.width: 1
+
+window.active.border.color: #7aa2f7
+window.inactive.border.color: #333333
+
+window.active.title.bg.color: #1f1f1f
+window.inactive.title.bg.color: #181818
+
+window.active.label.text.color: #eeeeee
+window.inactive.label.text.color: #777777
+
+window.active.button.unpressed.image.color: #cccccc
+window.inactive.button.unpressed.image.color: #666666
+
+menu.items.bg.color: #181818
+menu.items.text.color: #eeeeee
+menu.items.active.bg.color: #333333
+menu.items.active.text.color: #ffffff
+menu.border.color: #444444
+menu.separator.color: #444444
+
+osd.bg.color: #181818
+osd.border.color: #444444
+osd.label.text.color: #eeeeee
