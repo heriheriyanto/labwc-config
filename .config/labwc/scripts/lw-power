@@ -1,0 +1,13 @@
+#!/bin/sh
+# Menu daya lewat fuzzel: kunci, logout, suspend, reboot, shutdown.
+
+choice=$(printf '%s\n' Lock Logout Suspend Reboot Shutdown | fuzzel --dmenu -p 'Power > ') || exit 0
+
+case "$choice" in
+    Lock)     swaylock -f ;;
+    # Di bawah uwsm, logout harus lewat "uwsm stop", bukan perintah exit bawaan labwc.
+    Logout)   uwsm stop 2>/dev/null || labwc --exit ;;
+    Suspend)  systemctl suspend ;;
+    Reboot)   systemctl reboot ;;
+    Shutdown) systemctl poweroff ;;
+esac
